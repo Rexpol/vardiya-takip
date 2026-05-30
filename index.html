@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Vardiya Takip">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="description" content="Vardiya takip uygulaması - 3 vardiya rotasyon sistemi">
+    <title>Vardiya Takip</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-glow"></div>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1>Vardiya Takip</h1>
+                        <p class="header-subtitle" id="currentDate"></p>
+                    </div>
+                </div>
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    <span id="currentTime"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Active Shift Banner -->
+        <section class="active-shift-section" id="activeShiftSection">
+            <div class="active-shift-card" id="activeShiftCard">
+                <div class="active-shift-bg"></div>
+                <div class="active-shift-content">
+                    <div class="active-label">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        ŞU AN AKTİF VARDİYA
+                    </div>
+                    <div class="active-person" id="activePerson"></div>
+                    <div class="active-time" id="activeTime"></div>
+                    <div class="active-shift-type" id="activeShiftType"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Week Navigation -->
+        <section class="week-nav-section">
+            <button class="nav-btn" id="prevWeek" aria-label="Önceki hafta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <div class="week-info">
+                <div class="week-label" id="weekLabel"></div>
+                <div class="week-dates" id="weekDates"></div>
+            </div>
+            <button class="nav-btn" id="nextWeek" aria-label="Sonraki hafta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+            <button class="nav-btn today-btn" id="todayBtn" title="Bugüne dön">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                    <circle cx="12" cy="15" r="2"/>
+                </svg>
+            </button>
+        </section>
+
+        <!-- Shift Cards for the Week -->
+        <section class="shifts-section" id="shiftsSection">
+            <!-- Dynamically populated -->
+        </section>
+
+        <!-- Team Overview -->
+        <section class="team-section">
+            <h2 class="section-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                Ekip Üyeleri
+            </h2>
+            <div class="team-grid" id="teamGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- 3-Week Overview -->
+        <section class="overview-section">
+            <h2 class="section-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                3 Haftalık Rotasyon Döngüsü
+            </h2>
+            <div class="rotation-table-wrapper">
+                <table class="rotation-table" id="rotationTable">
+                    <!-- Dynamically populated -->
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Vardiya Takip Sistemi &copy; 2026</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+        }
+    </script>
+</body>
+</html>
